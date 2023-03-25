@@ -1,4 +1,4 @@
-# ContosoCrafts
+# QuickRecipes
 
 ## Tutorial
 
