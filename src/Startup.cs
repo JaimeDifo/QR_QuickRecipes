@@ -22,6 +22,7 @@ namespace QuickRecipes.WebSite
             services.AddHttpClient();
             services.AddControllers();
             services.AddTransient<JsonFileProductService>();
+            services.AddTransient<JsonFileIngredientService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
