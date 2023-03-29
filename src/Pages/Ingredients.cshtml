@@ -1,10 +1,11 @@
 ﻿@page
 @using QuickRecipes.WebSite.Components
-@model IndexModel;
+@model IndexModel
 @{
     ViewData["Title"] = "Ingredients";
 }
 <h1>@ViewData["Title"]</h1>
+
 @(await Html.RenderComponentAsync<IngredientsList>(RenderMode.ServerPrerendered))
 
 <p>Use this page to detail your site's privacy policy.</p>

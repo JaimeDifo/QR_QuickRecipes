@@ -17,10 +17,7 @@
             </div>
             <div class="card-footer">
                 <small class="text-muted">
-                    <button @onclick="(e => SelectIngredient(Ingredients?.id))"
-                            data-toggle="modal" data-target="#IngredientsModel" class="btn btn-primary">
-                        More Info
-                    </button>
+                    <a class="nav-link text-dark" href="ViewIngredient?id=@Ingredients.id&controller=Home">View</a>
                 </small>
             </div>
         </div>

@@ -50,7 +50,7 @@ namespace QuickRecipes.WebSite
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "/{action=Index}/{id?}");
+                    pattern: "{action=Index}/{id?}");
             });
             app.UseEndpoints(endpoints =>
             {

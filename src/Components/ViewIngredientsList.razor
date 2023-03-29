@@ -1,0 +1,33 @@
+@using QuickRecipes.WebSite.Models
+@using QuickRecipes.WebSite.Services
+@using QuickRecipes.WebSite.Controllers
+@using QuickRecipes.WebSite.Components
+@using Microsoft.AspNetCore.Components.Web
+
+@code
+{
+    [Parameter]
+    public Ingredients MyValue { get; set; }
+}
+<div class="card-columns">
+    <div class="card">
+        <div class="card-img" style="background-image: url('@MyValue.Image');">
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">@MyValue.cuisine</h5>
+        </div>
+        <div class="card-description">
+            <p class="card-description"> @MyValue.cuisine</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">
+            </small>
+        </div>
+    </div>
+
+</div>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+

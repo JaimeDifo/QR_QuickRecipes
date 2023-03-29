@@ -5,4 +5,9 @@
     <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Pages\Home\" />
+    <Folder Include="Pages\Views\" />
+  </ItemGroup>
 </Project>
