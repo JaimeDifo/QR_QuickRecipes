@@ -12,19 +12,19 @@ namespace QuickRecipes.WebSite.Controllers
 {
     public class HomeController : Controller
     {
-        /*public IActionResult Index()
+        public IActionResult Index()
         {
             return View();
         }
         public IActionResult Ingredients()
         {
             return View();
-        }*/
-        /*public IActionResult ViewIngredient(int? id, [FromServices] IWebHostEnvironment env)
+        }
+        public IActionResult ViewIngredient(int? id, [FromServices] IWebHostEnvironment env)
         {
             ViewData["ingredient"] = new JsonFileIngredientService(env).GetIngredients().First(n => n.id == id);
             
             return View();
-        }*/
+        }
     }
 }
