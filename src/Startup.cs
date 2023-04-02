@@ -22,6 +22,7 @@ namespace QuickRecipes.WebSite
             services.AddHttpClient();
             services.AddControllers();
             services.AddTransient<JsonFileProductService>();
+            services.AddTransient<JsonFileIngredientService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,7 +50,7 @@ namespace QuickRecipes.WebSite
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "/{action=Index}/{id?}");
+                    pattern: "{action=Index}/{id?}");
             });
             app.UseEndpoints(endpoints =>
             {
