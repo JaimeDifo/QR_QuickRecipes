@@ -3,12 +3,16 @@
 @using QuickRecipes.WebSite.Controllers
 @using QuickRecipes.WebSite.Components
 @using Microsoft.AspNetCore.Components.Web
+@using IronBarCode
 
 @code
 {
     [Parameter]
     public Ingredients MyValue { get; set; }
+    [Parameter]
+    public string svg { get; set; } 
 }
+
 <div class="card-columns">
     <div class="card">
         <div class="card-img" style="background-image: url('@MyValue.Image');">
@@ -21,6 +25,10 @@
         </div>
         <div class="card-footer">
             <small class="text-muted">
+                <button 
+                        data-toggle="modal" data-target="#productModal" class="btn btn-primary">
+                    QR-Code
+                </button>
             </small>
         </div>
     </div>
@@ -30,4 +38,23 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
+<div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        @if (MyValue != null)
+        {
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productTitle">@MyValue.ingredients</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <img src="data:image/svg+xml;base64,@svg"/>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
