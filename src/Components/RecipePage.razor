@@ -1,0 +1,41 @@
+﻿@using QuickRecipes.WebSite.Models
+@using QuickRecipes.WebSite.Services
+@using Microsoft.AspNetCore.Components.Web
+@inject JsonFileProductService ProductsService
+
+<div class="card-columns">
+    @foreach (var Product in ProductsService.GetProducts())
+    {
+        <div class="card">
+            <div class="card-img" style="background-image: url('@Product.Image');">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@Product.Title</h5>
+            </div>
+            <div class="card-description">
+                <p class="card-description"> @Product.Description</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">
+                    <a class="nav-link text-dark" href="ViewRecipes?id=@Product.Id&controller=Home">View</a>
+                </small>
+            </div>
+        </div>
+    }
+</div>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+@code
+{
+    Product? selectedProduct;
+    string? selectedProductId;
+
+    void SelectIngredient(string? Productid)
+    {
+        selectedProductId = Productid;
+        selectedProduct = ProductsService.GetProducts().First(x => x.Id == Productid);
+
+    }
+}

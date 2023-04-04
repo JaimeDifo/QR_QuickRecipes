@@ -22,8 +22,14 @@ namespace QuickRecipes.WebSite.Controllers
         }
         public IActionResult ViewIngredient(int? id, [FromServices] IWebHostEnvironment env)
         {
-            ViewData["ingredient"] = new JsonFileIngredientService(env).GetIngredients().First(n => n.id == id);
+            ViewData["Ingredient"] = new JsonFileIngredientService(env).GetIngredients().First(n => n.id == id);
             
+            return View();
+        }
+        public IActionResult ViewRecipe(string? id, [FromServices] IWebHostEnvironment env)
+        {
+            ViewData["View Recipe"] = new JsonFileProductService(env).GetProducts().First(n => n.Id == id);
+
             return View();
         }
     }

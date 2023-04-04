@@ -1,0 +1,22 @@
+﻿@page
+@using QuickRecipes.WebSite.Models
+@using QuickRecipes.WebSite.Services
+@using QuickRecipes.WebSite.Controllers
+@using QuickRecipes.WebSite.Components
+@using Microsoft.AspNetCore.Components.Web
+
+@inject JsonFileProductService ProductsService
+@model ViewRecipeModel
+@{
+    ViewData["Title"] = "View Recipe";
+}
+<h1>@ViewData["Title"] </h1>
+
+@(await Html.RenderComponentAsync<ViewRecipePage>(RenderMode.ServerPrerendered, new { MyValue = Model.product, svg = Model.base64svg}))
+
+
+<p>Use this page to detail your site's privacy policy.</p>
+
+
+
+

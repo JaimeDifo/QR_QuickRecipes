@@ -14,8 +14,6 @@ namespace QuickRecipes.WebSite.Pages
 
         public IngredientsModel(ILogger<IngredientsModel> logger) => _logger = logger;
 
-
-
         public void OnGet()
         {
         }
