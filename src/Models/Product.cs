@@ -5,6 +5,7 @@ namespace QuickRecipes.WebSite.Models
 {
     public class Product
     {
+        [JsonPropertyName("id")]
         public string? Id { get; set; }
         public string? Maker { get; set; }
 

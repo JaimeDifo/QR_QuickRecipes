@@ -7,7 +7,11 @@
     "Title": "Freezable soup recipes",
     "Description": "Batch cook a wholesome, nourishing soup recipe to stash in the freezer ready to defrost for lunch or dinner. Our recipe ideas include veggie, vegan, blended and chunky soups.",
     "Instructions": "",
-    "Ratings": null
+    "Ratings": [
+      5,
+      4,
+      5
+    ]
   },
   {
     "Id": "Low-carb-slow-cooker",

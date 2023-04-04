@@ -11,26 +11,27 @@ using QuickRecipes.WebSite.Models;
 using System.IO;
 using System.Text;
 using Net.Codecrete.QrCodeGenerator;
+using static System.Net.WebRequestMethods;
 
 
 namespace QuickRecipes.WebSite.Pages
 {
-    public class ViewIngredientsModel : PageModel
+    public class ViewRecipeModel : PageModel
     {
-        private readonly ILogger<ViewIngredientsModel> _logger;
+        private readonly ILogger<ViewRecipeModel> _logger;
 
-        public ViewIngredientsModel(ILogger<ViewIngredientsModel> logger) => _logger = logger;
+        public ViewRecipeModel(ILogger<ViewRecipeModel> logger) => _logger = logger;
 
         public string base64svg { get; set; }
-        public Ingredients ingredient { get; set; }
+        public Product product { get; set; }
 
-        public void OnGet(int id, [FromServices] IWebHostEnvironment env)
+        public void OnGet(string id, [FromServices] IWebHostEnvironment env)
         {
-            var qr = QrCode.EncodeText("http://192.168.1.186:52042/ViewIngredient?id=" + id+"&controller=Home", QrCode.Ecc.Medium);
+            var qr = QrCode.EncodeText("http://192.168.1.186:52042/ViewRecipes?id=" + id + "&controller=Home", QrCode.Ecc.Medium);
             string svg = qr.ToSvgString(4);
             this.base64svg = Convert.ToBase64String(Encoding.UTF8.GetBytes(svg));
-            var ingredient = new JsonFileIngredientService(env).GetIngredients().First(n => n.id == id);
-            this.ingredient = ingredient;
+            var product = new JsonFileProductService(env).GetProducts().First(n => n.Id == id);
+            this.product = product;
         }
     }
 }
