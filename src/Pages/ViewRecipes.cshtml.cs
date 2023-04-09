@@ -30,7 +30,7 @@ namespace QuickRecipes.WebSite.Pages
             var qr = QrCode.EncodeText("http://192.168.1.186:52042/ViewRecipes?id=" + id + "&controller=Home", QrCode.Ecc.Medium);
             string svg = qr.ToSvgString(4);
             this.base64svg = Convert.ToBase64String(Encoding.UTF8.GetBytes(svg));
-            var product = new JsonFileProductService(env).GetProducts().First(n => n.Id == id);
+            var product = new CSVFileProductService(env).GetProducts().First(n => n.Id == id);
             this.product = product;
         }
     }

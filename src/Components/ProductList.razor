@@ -1,16 +1,18 @@
 @using QuickRecipes.WebSite.Models
 @using QuickRecipes.WebSite.Services
 @using Microsoft.AspNetCore.Components.Web
-@inject JsonFileProductService ProductService
+@inject CSVFileProductService ProductService
+
+
 
 <div class="card-columns">
-    @foreach (var product in ProductService.GetProducts())
+    @foreach (var product in example())
     {
         <div class="card">
             <div class="card-img" style="background-image: url('@product.Image');">
             </div>
             <div class="card-body">
-                <h5 class="card-title">@product.Title</h5>
+                <h5 class="card-title">@product.Recipe_Name</h5>
             </div>
             <div class="card-description">
                 <p class="card-description"> @product.Description</p>
@@ -34,7 +36,7 @@
         {
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="productTitle">@selectedProduct.Title</h5>
+                    <h5 class="modal-title" id="productTitle">@selectedProduct.Recipe_Name</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -79,6 +81,12 @@
 
 @code
 {
+
+    int pageNumber = 2; // The page number you want to retrieve
+                        // The number of items per page
+
+
+
     Product? selectedProduct;
     string? selectedProductId;
 
@@ -87,6 +95,14 @@
         selectedProductId = productId;
         selectedProduct = ProductService.GetProducts().First(x => x.Id == productId);
         GetCurrentRating();
+    }
+
+    List<Product> example()
+    {
+        int pageSize =  9;
+        return  ProductService.GetProducts()
+                             .Skip((pageNumber - 1) * pageSize)
+                             .Take(pageSize).ToList();
     }
 
     int currentRating = 0;

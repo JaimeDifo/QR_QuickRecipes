@@ -18,7 +18,7 @@
         <div class="card-img" style="background-image: url('@MyValue.Image');">
         </div>
         <div class="card-body">
-            <h5 class="card-title">@MyValue.Title</h5>
+            <h5 class="card-title">@MyValue.Ingredients</h5>
         </div>
         <div class="card-description">
             <p class="card-description"> @MyValue.Description</p>
@@ -33,7 +33,11 @@
     </div>
 </div>
 
-<p>@MyValue.Instructions</p>
+@foreach (var instruction in MyValue.Instruction)
+{
+    <p>@instruction</p>
+}
+
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -43,7 +47,7 @@
         {
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="productTitle">@MyValue.Title</h5>
+                    <h5 class="modal-title" id="productTitle">@MyValue.Ingredients</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

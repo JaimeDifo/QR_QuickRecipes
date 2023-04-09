@@ -29,7 +29,7 @@ namespace QuickRecipes.WebSite.Pages
             var qr = QrCode.EncodeText("http://192.168.1.186:52042/ViewIngredient?id=" + id+"&controller=Home", QrCode.Ecc.Medium);
             string svg = qr.ToSvgString(4);
             this.base64svg = Convert.ToBase64String(Encoding.UTF8.GetBytes(svg));
-            var ingredient = new JsonFileIngredientService(env).GetIngredients().First(n => n.id == id);
+            var ingredient = new CSVIngredientService(env).GetIngredients().First(n => n.id == id);
             this.ingredient = ingredient;
         }
     }

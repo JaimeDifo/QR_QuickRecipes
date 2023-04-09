@@ -1,7 +1,7 @@
 @using QuickRecipes.WebSite.Models
 @using QuickRecipes.WebSite.Services
 @using Microsoft.AspNetCore.Components.Web
-@inject JsonFileIngredientService IngredientsService
+@inject CSVIngredientService IngredientsService
 
 <div class="card-columns">
     @foreach (var Ingredients in IngredientsService.GetIngredients())
@@ -10,10 +10,10 @@
             <div class="card-img" style="background-image: url('@Ingredients.Image');">
             </div>
             <div class="card-body">
-                <h5 class="card-title">@Ingredients.cuisine</h5>
+                <h5 class="card-title">@Ingredients.ingredients</h5>
             </div>
             <div class="card-description">
-                <p class="card-description"> @Ingredients.cuisine</p>
+                <p class="card-description"> @Ingredients.Description</p>
             </div>
             <div class="card-footer">
                 <small class="text-muted">

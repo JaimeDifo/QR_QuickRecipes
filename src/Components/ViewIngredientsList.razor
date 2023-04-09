@@ -3,13 +3,15 @@
 @using QuickRecipes.WebSite.Controllers
 @using QuickRecipes.WebSite.Components
 @using Microsoft.AspNetCore.Components.Web
+@inject CSVFileProductService ProductService
 
 @code
 {
     [Parameter]
     public Ingredients MyValue { get; set; }
     [Parameter]
-    public string svg { get; set; } 
+    public string svg { get; set; }
+
 }
 
 <div class="card-columns">
@@ -17,15 +19,14 @@
         <div class="card-img" style="background-image: url('@MyValue.Image');">
         </div>
         <div class="card-body">
-            <h5 class="card-title">@MyValue.cuisine</h5>
+            <h5 class="card-title">@MyValue.ingredients</h5>
         </div>
         <div class="card-description">
-            <p class="card-description"> @MyValue.cuisine</p>
+            <p class="card-description"> @MyValue.Description</p>
         </div>
         <div class="card-footer">
             <small class="text-muted">
-                <button 
-                        data-toggle="modal" data-target="#productModal" class="btn btn-primary">
+                <button data-toggle="modal" data-target="#productModal" class="btn btn-primary">
                     QR-Code
                 </button>
             </small>
@@ -34,6 +35,7 @@
 </div>
 
 <p>@MyValue.ingredients</p>
+
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -50,10 +52,11 @@
                 </div>
                 <div class="modal-body">
                     <div class="card">
-                        <img src="data:image/svg+xml;base64,@svg"/>
+                        <img src="data:image/svg+xml;base64,@svg" />
                     </div>
                 </div>
             </div>
         }
     </div>
 </div>
+

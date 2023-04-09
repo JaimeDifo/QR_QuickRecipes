@@ -9,10 +9,10 @@ namespace QuickRecipes.WebSite.Controllers
     [Route("[controller]")]
     public class ProductsController : ControllerBase
     {
-        public ProductsController(JsonFileProductService productService) => 
+        public ProductsController(CSVFileProductService productService) => 
             ProductService = productService;
 
-        public JsonFileProductService ProductService { get; }
+        public CSVFileProductService ProductService { get; }
 
         [HttpGet]
         public IEnumerable<Product> Get() => ProductService.GetProducts();

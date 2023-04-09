@@ -1,22 +1,25 @@
-﻿using System.Text.Json;
-using System.Text.Json.Serialization;
+﻿using System;
+using System.Collections.Generic;
+
+using System.Text.Json;
+using CsvHelper.Configuration.Attributes;
 
 namespace QuickRecipes.WebSite.Models
 {
     public class Product
     {
-        [JsonPropertyName("id")]
         public string? Id { get; set; }
-        public string? Maker { get; set; }
-
-        [JsonPropertyName("img")]
+        public string? Recipe_URLName { get; set; }
+        public string? Recipe_Name { get; set; }
+        public string[]? Ingredients { get; set; }
+        [TypeConverter(typeof(StringListConverter))]
+        public List<string>? Instruction { get; set; }
         public string? Image { get; set; }
-        public string? Url { get; set; }
-        public string? Title { get; set; }
-        public string? Description { get; set; }
-        public string? Instructions { get; set; }
+        public string Description { get; set; }
         public int[]? Ratings { get; set; }
 
-        public override string ToString() => JsonSerializer.Serialize<Product>(this);
     }
+
+
 }
+

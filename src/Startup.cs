@@ -21,8 +21,8 @@ namespace QuickRecipes.WebSite
             services.AddServerSideBlazor();
             services.AddHttpClient();
             services.AddControllers();
-            services.AddTransient<JsonFileProductService>();
-            services.AddTransient<JsonFileIngredientService>();
+            services.AddTransient<CSVFileProductService>();
+            services.AddTransient<CSVIngredientService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
