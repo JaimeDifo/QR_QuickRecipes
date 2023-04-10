@@ -10,7 +10,7 @@
 @{
     ViewData["Title"] = "View Ingredient";
 }
-<h1>@ViewData["Title"] </h1>
+
 
 @(await Html.RenderComponentAsync<ViewIngredientsList>(RenderMode.ServerPrerendered, new { MyValue = Model.ingredient, svg = Model.base64svg}))
 

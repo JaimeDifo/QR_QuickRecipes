@@ -10,13 +10,9 @@
 @{
     ViewData["Title"] = "View Recipe";
 }
-<h1>@ViewData["Title"] </h1>
 
 @(await Html.RenderComponentAsync<ViewRecipePage>(RenderMode.ServerPrerendered, new { MyValue = Model.product, svg = Model.base64svg}))
 
 
 <p>Use this page to detail your site's privacy policy.</p>
-
-
-
 

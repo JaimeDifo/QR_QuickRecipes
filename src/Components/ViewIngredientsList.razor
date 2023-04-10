@@ -2,6 +2,7 @@
 @using QuickRecipes.WebSite.Services
 @using QuickRecipes.WebSite.Controllers
 @using QuickRecipes.WebSite.Components
+@using QuickRecipes.WebSite.MachineLearning
 @using Microsoft.AspNetCore.Components.Web
 @inject CSVFileProductService ProductService
 
@@ -11,9 +12,15 @@
     public Ingredients MyValue { get; set; }
     [Parameter]
     public string svg { get; set; }
-
 }
 
+@code{
+    SentenceTransformer.TrainModel()
+}
+
+<h1>@MyValue.ingredients</h1>
+
+<br />
 <div class="card-columns">
     <div class="card">
         <div class="card-img" style="background-image: url('@MyValue.Image');">
@@ -27,14 +34,19 @@
         <div class="card-footer">
             <small class="text-muted">
                 <button data-toggle="modal" data-target="#productModal" class="btn btn-primary">
+                    <div class="arrow"></div>
                     QR-Code
+                </button>
+                <button data-toggle="modal" data-target="#productModal" class="btn btn-primary">
+                    <div class="arrow"></div>
+                    Share
                 </button>
             </small>
         </div>
     </div>
 </div>
 
-<p>@MyValue.ingredients</p>
+<p>@MyValue.Description</p>
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

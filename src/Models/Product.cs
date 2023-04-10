@@ -11,7 +11,8 @@ namespace QuickRecipes.WebSite.Models
         public string? Id { get; set; }
         public string? Recipe_URLName { get; set; }
         public string? Recipe_Name { get; set; }
-        public string[]? Ingredients { get; set; }
+        [TypeConverter(typeof(StringListConverter))]
+        public List<string>? Ingredients { get; set; }
         [TypeConverter(typeof(StringListConverter))]
         public List<string>? Instruction { get; set; }
         public string? Image { get; set; }
