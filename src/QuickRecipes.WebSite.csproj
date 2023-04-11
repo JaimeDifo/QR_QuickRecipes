@@ -10,7 +10,6 @@
     <Folder Include="Pages\Home\" />
     <Folder Include="Pages\Views\" />
     <Folder Include="wwwroot\data\Food Images\" />
-    <Folder Include="QRFolder\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ML" Version="2.0.1" />
@@ -18,11 +17,12 @@
     <PackageReference Include="Microsoft.ML.TensorFlow" Version="2.0.1" />
     <PackageReference Include="BarCode" Version="2023.4.1" />
     <PackageReference Include="Net.Codecrete.QrCodeGenerator" Version="2.0.3" />
+    <PackageReference Include="CsvHelper" Version="30.0.1" />
+    <PackageReference Include="Microsoft.ML.FastTree" Version="2.0.1" />
+    <PackageReference Include="TensorFlow.NET" Version="0.100.4" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\data\Food Images\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="QRFolder\" />
+    <Content Remove="wwwroot\data\Producttraindatast.csv" />
   </ItemGroup>
 </Project>

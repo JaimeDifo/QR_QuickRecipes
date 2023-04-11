@@ -5,12 +5,12 @@
 @using QuickRecipes.WebSite.Components
 @using Microsoft.AspNetCore.Components.Web
 
-@inject JsonFileIngredientService IngredientsService
+@inject CSVFileProductService IngredientsService
 @model ViewIngredientsModel
 @{
     ViewData["Title"] = "View Ingredient";
 }
-<h1>@ViewData["Title"] </h1>
+
 
 @(await Html.RenderComponentAsync<ViewIngredientsList>(RenderMode.ServerPrerendered, new { MyValue = Model.ingredient, svg = Model.base64svg}))
 

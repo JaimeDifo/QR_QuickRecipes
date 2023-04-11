@@ -4,28 +4,42 @@ using System.Linq;
 using System.Text.Json;
 using QuickRecipes.WebSite.Models;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.ML;
+using Microsoft.ML.TensorFlow;
+using Microsoft.ML.Trainers;
+using Microsoft.ML.Transforms.Text;
+using System;
+
+using CsvHelper;
+using System.Globalization;
+
 
 namespace QuickRecipes.WebSite.Services
 {
-    public class JsonFileProductService
+    public class CSVFileProductService
     {
-        public JsonFileProductService(IWebHostEnvironment webHostEnvironment)
+        private List<Product> _recipes;
+        public CSVFileProductService(IWebHostEnvironment webHostEnvironment)
         {
             WebHostEnvironment = webHostEnvironment;
+            _recipes = GetProducts().ToList();
         }
 
         public IWebHostEnvironment WebHostEnvironment { get; }
 
-        private string JsonFileName => Path.Combine(WebHostEnvironment.WebRootPath, "data", "products.json");
+        private string CSVFileName => Path.Combine(WebHostEnvironment.WebRootPath, "data", "products.csv");
 
         public IEnumerable<Product> GetProducts()
         {
-            using var jsonFileReader = File.OpenText(JsonFileName);
-            return JsonSerializer.Deserialize<Product[]>(jsonFileReader.ReadToEnd(),
-                new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                });
+            using (var reader = new StreamReader(Path.Combine(WebHostEnvironment.WebRootPath, "data", "Products.csv")))
+
+
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+
+                var records = csv.GetRecords<Product>().ToList();
+                return records;
+            }
         }
 
         public void AddRating(string productId, int rating)
@@ -43,7 +57,7 @@ namespace QuickRecipes.WebSite.Services
                 products.First(x => x.Id == productId).Ratings = ratings.ToArray();
             }
 
-            using var outputStream = File.OpenWrite(JsonFileName);
+            using var outputStream = File.OpenWrite(CSVFileName);
 
             JsonSerializer.Serialize<IEnumerable<Product>>(
                 new Utf8JsonWriter(outputStream, new JsonWriterOptions
@@ -56,3 +70,5 @@ namespace QuickRecipes.WebSite.Services
         }
     }
 }
+
+
