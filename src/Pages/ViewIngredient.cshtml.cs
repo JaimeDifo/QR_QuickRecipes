@@ -11,7 +11,8 @@ using QuickRecipes.WebSite.Models;
 using System.IO;
 using System.Text;
 using Net.Codecrete.QrCodeGenerator;
-
+using System.Net.Http;
+using System.Text.Json;
 
 namespace QuickRecipes.WebSite.Pages
 {
@@ -30,10 +31,10 @@ namespace QuickRecipes.WebSite.Pages
             string svg = qr.ToSvgString(4);
             this.base64svg = Convert.ToBase64String(Encoding.UTF8.GetBytes(svg));
             var service = new CSVIngredientService(env);
-            var ingredient = service.GetIngredients().First(n => n.id == id);
-          
+            var ingredient = service.GetIngredients().First(n => n.id == id);         
             this.ingredient = ingredient;
         }
+
     }
 }
 

@@ -15,6 +15,8 @@
     public Ingredients MyValue { get; set; }
     [Parameter]
     public string svg { get; set; }
+    [Parameter]
+    public int[] ProductId { get; set; }
 
 }
 
@@ -73,6 +75,30 @@
     </div>
 </div>
 
-
-
-
+<div class="card-columns">
+    @foreach (var recommendation in IngredientService.GetRecommmendedProductsAsync(MyValue.ingredients).GetAwaiter().GetResult())
+    {
+            <div class="card">
+                <div class="card-img" style="background-image: url('@recommendation.Image');">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">@recommendation.Recipe_Name</h5>
+                </div>
+                <div class="card-description">
+                    <p class="card-description"> @recommendation.Description</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">
+                        
+                            <a class="nav-link text-dark" href="ViewRecipes?id=@recommendation.Id&controller=Home"><button class="btn btn-primary">
+                                View
+                                </button>
+                                </a>                    
+                        <button data-toggle="modal" data-target="#productModal" class="btn btn-primary">
+                            QR-Code
+                        </button>
+                    </small>
+                </div>
+            </div>
+    }
+</div>
