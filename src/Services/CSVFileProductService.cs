@@ -5,19 +5,24 @@ using System.Text.Json;
 using QuickRecipes.WebSite.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.ML;
+using Microsoft.ML.TensorFlow;
 using Microsoft.ML.Trainers;
 using Microsoft.ML.Transforms.Text;
 using System;
+
 using CsvHelper;
 using System.Globalization;
+
 
 namespace QuickRecipes.WebSite.Services
 {
     public class CSVFileProductService
     {
+        private List<Product> _recipes;
         public CSVFileProductService(IWebHostEnvironment webHostEnvironment)
         {
             WebHostEnvironment = webHostEnvironment;
+            _recipes = GetProducts().ToList();
         }
 
         public IWebHostEnvironment WebHostEnvironment { get; }
@@ -63,8 +68,7 @@ namespace QuickRecipes.WebSite.Services
                 products
             );
         }
-
     }
-
-    
 }
+
+

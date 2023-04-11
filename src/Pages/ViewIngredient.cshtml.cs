@@ -24,12 +24,14 @@ namespace QuickRecipes.WebSite.Pages
         public string base64svg { get; set; }
         public Ingredients ingredient { get; set; }
 
-        public void OnGet(int id, [FromServices] IWebHostEnvironment env)
+        public async void OnGet(int id, [FromServices] IWebHostEnvironment env)
         {
             var qr = QrCode.EncodeText("http://192.168.1.186:52042/ViewIngredient?id=" + id+"&controller=Home", QrCode.Ecc.Medium);
             string svg = qr.ToSvgString(4);
             this.base64svg = Convert.ToBase64String(Encoding.UTF8.GetBytes(svg));
-            var ingredient = new CSVIngredientService(env).GetIngredients().First(n => n.id == id);
+            var service = new CSVIngredientService(env);
+            var ingredient = service.GetIngredients().First(n => n.id == id);
+          
             this.ingredient = ingredient;
         }
     }

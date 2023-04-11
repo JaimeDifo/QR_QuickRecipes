@@ -1,10 +1,13 @@
 @using QuickRecipes.WebSite.Models
+@using Microsoft.ML;
 @using QuickRecipes.WebSite.Services
 @using QuickRecipes.WebSite.Controllers
+@using Microsoft.ML.Transforms.Text;
 @using QuickRecipes.WebSite.Components
-@using QuickRecipes.WebSite.MachineLearning
 @using Microsoft.AspNetCore.Components.Web
 @inject CSVFileProductService ProductService
+@inject CSVIngredientService IngredientService
+
 
 @code
 {
@@ -12,11 +15,9 @@
     public Ingredients MyValue { get; set; }
     [Parameter]
     public string svg { get; set; }
+
 }
 
-@code{
-    SentenceTransformer.TrainModel()
-}
 
 <h1>@MyValue.ingredients</h1>
 
@@ -71,4 +72,7 @@
         }
     </div>
 </div>
+
+
+
 
