@@ -49,11 +49,13 @@
     </div>
 </div>
 
-<p>@MyValue.Description</p>
+<p></p>
 
+<body>
 
+</body>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<h1>Recommendations</h1>
 <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         @if (MyValue != null)
@@ -78,27 +80,28 @@
 <div class="card-columns">
     @foreach (var recommendation in IngredientService.GetRecommmendedProductsAsync(MyValue.ingredients).GetAwaiter().GetResult())
     {
-            <div class="card">
-                <div class="card-img" style="background-image: url('@recommendation.Image');">
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">@recommendation.Recipe_Name</h5>
-                </div>
-                <div class="card-description">
-                    <p class="card-description"> @recommendation.Description</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">
-                        
-                            <a class="nav-link text-dark" href="ViewRecipes?id=@recommendation.Id&controller=Home"><button class="btn btn-primary">
-                                View
-                                </button>
-                                </a>                    
-                        <button data-toggle="modal" data-target="#productModal" class="btn btn-primary">
-                            QR-Code
-                        </button>
-                    </small>
-                </div>
+        <div class="card">
+            <div class="card-img" style="background-image: url('@recommendation.Image');">
             </div>
+            <div class="card-body">
+                <h5 class="card-title">@recommendation.Recipe_Name</h5>
+            </div>
+            <div class="card-description">
+                <p class="card-description"> @recommendation.Description</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">
+
+                    <a class="nav-link text-dark" href="ViewRecipes?id=@recommendation.Id&controller=Home">
+                        <button class="btn btn-primary">
+                            View
+                        </button>
+                    </a>
+                    <button data-toggle="modal" data-target="#productModal" class="btn btn-primary">
+                        QR-Code
+                    </button>
+                </small>
+            </div>
+        </div>
     }
 </div>

@@ -37,4 +37,3 @@ namespace QuickRecipes.WebSite.Pages
 
     }
 }
-

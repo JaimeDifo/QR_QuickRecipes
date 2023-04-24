@@ -34,15 +34,28 @@
     </div>
 </div>
 
-@foreach (var ingredient in MyValue.Ingredients)
-{
-    <p>@ingredient</p>
-}
+<div id="ingredient" class="Ingredient" style="max-width: 22rem;">
+    <div class="card-header">Ingredients</div>
+    <div class="card-body">
+        @foreach (var ingredient in MyValue.Ingredients)
+        {
+                <div class="card-description">
+                    <p class="card-text">@ingredient</p>
+                </div>
 
-@foreach (var instruction in MyValue.Instruction)
-{
-    <p>@instruction</p>
-}
+        }
+    </div>
+</div>
+
+<div id="instruction" class="Instruction" style="max-width: 22rem;">
+    <div class="card-header">Instruction</div>
+    <div class="card-body">
+        @foreach (var instruction in MyValue.Instruction)
+        {
+                <p class="card-text">@instruction</p>
+        }
+    </div>
+</div>
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

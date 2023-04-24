@@ -27,7 +27,7 @@ namespace QuickRecipes.WebSite.Services
 
         public IWebHostEnvironment WebHostEnvironment { get; }
 
-        private string CSVFileName => Path.Combine(WebHostEnvironment.WebRootPath, "data", "products.csv");
+        private string CSVFileName => Path.Combine(WebHostEnvironment.WebRootPath, "data", "Products.csv");
 
         public IEnumerable<Product> GetProducts()
         {
