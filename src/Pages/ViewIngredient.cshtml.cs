@@ -27,7 +27,7 @@ namespace QuickRecipes.WebSite.Pages
 
         public async void OnGet(int id, [FromServices] IWebHostEnvironment env)
         {
-            var qr = QrCode.EncodeText("http://192.168.1.186:52042/ViewIngredient?id=" + id+"&controller=Home", QrCode.Ecc.Medium);
+            var qr = QrCode.EncodeText("http://172.20.26.156:52042/ViewIngredient?id=" + id+"&controller=Home", QrCode.Ecc.Medium);
             string svg = qr.ToSvgString(4);
             this.base64svg = Convert.ToBase64String(Encoding.UTF8.GetBytes(svg));
             var service = new CSVIngredientService(env);
